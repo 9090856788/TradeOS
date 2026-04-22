@@ -2,8 +2,7 @@
 
 export enum Colors {
   themeColor = "#0EA5E9", 
-  
- 
+
   background = "#0F172A", 
   background_light = "#1E293B", 
   text = "#F8FAFC", 
