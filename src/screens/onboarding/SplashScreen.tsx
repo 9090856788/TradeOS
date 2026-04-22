@@ -1,11 +1,12 @@
-import { View, Text } from 'react-native';
+import { Text } from 'react-native';
 import React from 'react';
+import CustomeSafeAreaView from '../../components/global/CustomeSafeAreaView';
 
 const SplashScreen = () => {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <CustomeSafeAreaView>
       <Text>SplashScreen</Text>
-    </View>
+    </CustomeSafeAreaView>
   );
 };
 
