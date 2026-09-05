@@ -1,12 +1,12 @@
 import { Text } from 'react-native';
 import React from 'react';
-import CustomeSafeAreaView from '../../components/global/CustomeSafeAreaView';
+import CustomSafeAreaView from '../../components/global/CustomSafeAreaView';
 
 const SplashScreen = () => {
   return (
-    <CustomeSafeAreaView>
+    <CustomSafeAreaView>
       <Text>SplashScreen</Text>
-    </CustomeSafeAreaView>
+    </CustomSafeAreaView>
   );
 };
 

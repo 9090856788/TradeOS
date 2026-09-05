@@ -2,12 +2,12 @@ import { StyleSheet, Text } from 'react-native';
 import React, { FC } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-interface customeSafeAreaViewProps {
+interface CustomSafeAreaViewProps {
   children: React.ReactNode;
   style?: object;
 }
 
-const CustomeSafeAreaView: FC<customeSafeAreaViewProps> = ({
+const CustomSafeAreaView: FC<CustomSafeAreaViewProps> = ({
   children,
   style,
 }) => {
@@ -18,7 +18,7 @@ const CustomeSafeAreaView: FC<customeSafeAreaViewProps> = ({
   );
 };
 
-export default CustomeSafeAreaView;
+export default CustomSafeAreaView;
 
 const styles = StyleSheet.create({
   container: {
