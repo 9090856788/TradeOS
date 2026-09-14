@@ -1,6 +1,6 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { mergeedStack } from './ScreenCollection';
+import { mergedStack } from './ScreenCollection';
 
 const Stack = createNativeStackNavigator();
 const MainNavigator = () => {
@@ -10,7 +10,7 @@ const MainNavigator = () => {
         headerShown: false,
       }}
     >
-      {mergeedStack.map((screen, index) => {
+      {mergedStack.map((screen, index) => {
         return (
           <Stack.Screen
             key={index}

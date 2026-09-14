@@ -25,4 +25,4 @@ export const dashBoardStack = [
   },
 ];
 
-export const mergeedStack = [...authStack, ...dashBoardStack];
+export const mergedStack = [...authStack, ...dashBoardStack];
