@@ -1,13 +1,21 @@
-import { Text } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import React from 'react';
-import CustomSafeAreaView from '../../components/global/CustomSafeAreaView';
+import DotLoading from '../../components/global/DotLoading';
 
 const SplashScreen = () => {
   return (
-    <CustomSafeAreaView>
-      <Text>SplashScreen</Text>
-    </CustomSafeAreaView>
+    <View style={styles.container}>
+      <DotLoading />
+    </View>
   );
 };
 
 export default SplashScreen;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});
