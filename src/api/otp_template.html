@@ -4,200 +4,650 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TradeOS OTP Email</title>
+
+    <title>TradeOS - Verification Code</title>
+
     <style>
+        /* ================================
+           RESET
+        ================================= */
+
+        html,
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            padding: 20px;
             margin: 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 0;
+            width: 100%;
         }
 
-        .wrapper-container {
-            background-color: rgba(255, 255, 255, 0.95);
-            padding: 20px;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
+        body {
+            background-color: #f4f7fb;
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Helvetica,
+                Arial,
+                sans-serif;
+            color: #172033;
+            -webkit-font-smoothing: antialiased;
         }
 
-        .container {
-            max-width: 600px;
+        table {
+            border-spacing: 0;
+            border-collapse: collapse;
+        }
+
+        img {
+            border: 0;
+            display: block;
+            max-width: 100%;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* ================================
+           OUTER CONTAINER
+        ================================= */
+
+        .email-wrapper {
+            width: 100%;
+            background-color: #f4f7fb;
+            padding: 40px 20px;
+        }
+
+        .email-container {
+            width: 100%;
+            max-width: 620px;
             margin: 0 auto;
-            background: linear-gradient(145deg, #ffffff, #f8f9fa);
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        p {
-            font-size: 16px;
-            color: #2c3e50;
-            line-height: 1.6;
+        /* ================================
+           MAIN CARD
+        ================================= */
+
+        .email-card {
+            background-color: #ffffff;
+            border: 1px solid #e7ebf3;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow:
+                0 12px 40px rgba(23, 32, 51, 0.08);
+        }
+
+        /* ================================
+           HEADER
+        ================================= */
+
+        .header {
+            padding: 36px 40px 30px;
+            text-align: center;
+            border-bottom: 1px solid #eef1f6;
         }
 
         .logo {
-            text-align: center;
-            margin-bottom: 30px;
+            font-size: 30px;
+            line-height: 36px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin: 0;
+            color: #5b5ce2;
         }
 
-        .logo-text {
-            font-size: 32px;
-            font-weight: bold;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin: 0;
+        .logo-accent {
+            color: #7c3aed;
         }
 
         .tagline {
-            text-align: center;
-            color: #7f8c8d;
-            font-size: 14px;
-            margin-top: 5px;
-            font-style: italic;
+            margin: 7px 0 0;
+            color: #7b8497;
+            font-size: 13px;
+            line-height: 20px;
         }
 
+        /* ================================
+           CONTENT
+        ================================= */
+
+        .content {
+            padding: 40px;
+        }
+
+        .greeting {
+            margin: 0 0 10px;
+            font-size: 21px;
+            line-height: 30px;
+            font-weight: 700;
+            color: #172033;
+        }
+
+        .intro {
+            margin: 0;
+            font-size: 15px;
+            line-height: 24px;
+            color: #667085;
+        }
+
+        /* ================================
+           OTP SECTION
+        ================================= */
+
         .otp-section {
-            text-align: left;
-            margin-bottom: 30px;
-            line-height: 1.4;
+            margin: 30px 0;
+            padding: 28px 24px;
+            background-color: #f7f7ff;
+            border: 1px solid #e5e5ff;
+            border-radius: 16px;
+            text-align: center;
+        }
+
+        .otp-label {
+            margin: 0 0 12px;
+            color: #697386;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
         }
 
         .otp-code {
-            font-size: 28px;
-            color: #2c3e50;
-            font-weight: bold;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            margin: 0;
+            color: #4f46e5;
+            font-size: 38px;
+            line-height: 46px;
+            font-weight: 800;
+            letter-spacing: 9px;
+            padding-left: 9px;
         }
 
-        .otp-container {
-            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        .otp-expiry {
+            margin: 14px 0 0;
+            color: #7b8497;
+            font-size: 13px;
+            line-height: 20px;
+        }
+
+        /* ================================
+           SECURITY NOTICE
+        ================================= */
+
+        .security-box {
+            margin-top: 28px;
             padding: 20px;
-            border-radius: 15px;
-            border: 2px solid #e9ecef;
-            margin: 20px 0;
-            text-align: center;
+            background-color: #fff8eb;
+            border: 1px solid #f7dfad;
+            border-radius: 14px;
         }
 
-        .copy-instructions {
-            text-align: left;
-            margin-bottom: 30px;
+        .security-title {
+            margin: 0 0 10px;
+            color: #8a5a00;
+            font-size: 14px;
+            font-weight: 700;
         }
+
+        .security-list {
+            margin: 0;
+            padding-left: 20px;
+            color: #725b2b;
+            font-size: 13px;
+            line-height: 22px;
+        }
+
+        .security-list li {
+            padding-left: 3px;
+        }
+
+        /* ================================
+           HELP SECTION
+        ================================= */
+
+        .help-text {
+            margin: 28px 0 0;
+            font-size: 14px;
+            line-height: 23px;
+            color: #667085;
+        }
+
+        .help-link {
+            color: #4f46e5;
+            font-weight: 600;
+        }
+
+        /* ================================
+           SIGNATURE
+        ================================= */
+
+        .signature {
+            margin-top: 30px;
+            padding-top: 24px;
+            border-top: 1px solid #eef1f6;
+        }
+
+        .signature-text {
+            margin: 0;
+            color: #667085;
+            font-size: 14px;
+            line-height: 22px;
+        }
+
+        .team-name {
+            margin: 5px 0 0;
+            color: #4f46e5;
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        /* ================================
+           FOOTER
+        ================================= */
 
         .footer {
+            padding: 28px 40px 34px;
+            background-color: #f8f9fc;
+            border-top: 1px solid #eef1f6;
             text-align: center;
-            color: #7f8c8d;
-            margin-top: 30px;
-            font-weight: 500;
-            opacity: 0.8;
-            line-height: 1.4;
-            padding-top: 20px;
-            border-top: 1px solid #e9ecef;
         }
 
-        #footer-text {
-            font-size: 12px;
-            margin: 5px 0;
+        .footer-company {
+            margin: 0 0 18px;
+            color: #344054;
+            font-size: 14px;
+            font-weight: 700;
         }
 
         .social-links {
-            margin: 15px 0;
+            margin: 0 0 20px;
         }
 
         .social-links a {
-            color: #667eea;
-            text-decoration: none;
-            margin: 0 10px;
-            font-weight: 500;
+            display: inline-block;
+            margin: 0 7px;
+            color: #667085;
+            font-size: 12px;
+            font-weight: 600;
         }
 
         .social-links a:hover {
-            text-decoration: underline;
+            color: #4f46e5;
         }
 
-        .company-info {
-            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-            padding: 15px;
-            border-radius: 10px;
-            margin: 20px 0;
-            text-align: center;
+        .footer-links {
+            margin: 0 0 16px;
+        }
+
+        .footer-links a {
+            color: #667085;
+            font-size: 12px;
+            margin: 0 5px;
+        }
+
+        .footer-links a:hover {
+            color: #4f46e5;
+        }
+
+        .copyright {
+            margin: 0 0 10px;
+            color: #98a2b3;
+            font-size: 11px;
+            line-height: 18px;
+        }
+
+        .address {
+            margin: 0 0 10px;
+            color: #98a2b3;
+            font-size: 11px;
+            line-height: 18px;
+        }
+
+        .automated-message {
+            margin: 0;
+            color: #98a2b3;
+            font-size: 11px;
+            line-height: 18px;
+        }
+
+        /* ================================
+           MOBILE
+        ================================= */
+
+        @media only screen and (max-width: 600px) {
+
+            .email-wrapper {
+                padding: 20px 12px;
+            }
+
+            .email-card {
+                border-radius: 16px;
+            }
+
+            .header {
+                padding: 28px 24px 24px;
+            }
+
+            .logo {
+                font-size: 27px;
+            }
+
+            .content {
+                padding: 30px 24px;
+            }
+
+            .greeting {
+                font-size: 19px;
+            }
+
+            .otp-section {
+                padding: 24px 16px;
+            }
+
+            .otp-code {
+                font-size: 31px;
+                line-height: 40px;
+                letter-spacing: 6px;
+                padding-left: 6px;
+            }
+
+            .security-box {
+                padding: 17px;
+            }
+
+            .footer {
+                padding: 25px 20px 30px;
+            }
+        }
+
+        @media only screen and (max-width: 380px) {
+
+            .otp-code {
+                font-size: 27px;
+                letter-spacing: 4px;
+                padding-left: 4px;
+            }
         }
     </style>
 </head>
 
 <body>
-    <div class="wrapper-container">
-        <div class="container">
-            <div class="logo">
-                <h1 class="logo-text">TradeOS</h1>
-                <p class="tagline">Your Gateway to Smart Trading</p>
-            </div>
-            
-            <div class="otp-container">
-                <p style="text-align: center; font-size: 18px; color: #7f8c8d; margin-bottom: 15px;">
-                    Your One-Time Password
-                </p>
-                <p class="otp-code" style="margin: 0;">TradeOS_otp</p>
-            </div>
 
-            <div class="otp-section">
-                <div>
-                    <p>Hello Trader,</p>
-                    <p>Your one-time password (OTP) for TradeOS is:</p>
-                    
-                    <div style="display: flex; flex-direction: row; align-items: center; justify-content: center; margin: 20px 0;">
-                        <p style="margin: 0; font-size: 24px; font-weight: bold; color: #667eea;">TradeOS_otp2</p>
-                    </div>
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+            <td>
 
-                    <p><strong>Important:</strong></p>
-                    <ul style="color: #2c3e50; line-height: 1.6;">
-                        <li>This OTP is valid for 15 minutes only</li>
-                        <li>Use it only once to access your account</li>
-                        <li>Never share this OTP with anyone</li>
-                    </ul>
+                <div class="email-wrapper">
 
-                    <p>Copy and paste the above OTP to securely log in to your TradeOS account.</p>
-                    
-                    <p>Need help? Visit our <a href="https://TradeOS.com/help" style="color: #667eea; text-decoration: none;">Help Center</a> for support.</p>
-                    
-                    <p>Happy Trading!</p>
-                    <div style="display: flex; flex-direction: row; align-items: center; margin-top: 20px;">
-                        <p style="margin: 0; color: #667eea; font-weight: bold;">Team TradeOS</p>
-                    </div>
+                    <table
+                        role="presentation"
+                        class="email-container"
+                        width="100%"
+                        cellpadding="0"
+                        cellspacing="0"
+                    >
+
+                        <tr>
+                            <td>
+
+                                <!-- ================================
+                                     MAIN EMAIL CARD
+                                ================================= -->
+
+                                <table
+                                    role="presentation"
+                                    class="email-card"
+                                    width="100%"
+                                    cellpadding="0"
+                                    cellspacing="0"
+                                >
+
+                                    <!-- ================================
+                                         HEADER
+                                    ================================= -->
+
+                                    <tr>
+                                        <td class="header">
+
+                                            <h1 class="logo">
+                                                Trade<span class="logo-accent">OS</span>
+                                            </h1>
+
+                                            <p class="tagline">
+                                                Your Gateway to Smart Trading
+                                            </p>
+
+                                        </td>
+                                    </tr>
+
+
+                                    <!-- ================================
+                                         CONTENT
+                                    ================================= -->
+
+                                    <tr>
+                                        <td class="content">
+
+                                            <p class="greeting">
+                                                Hello Trader,
+                                            </p>
+
+                                            <p class="intro">
+                                                We received a request to access your
+                                                TradeOS account. Use the verification
+                                                code below to continue.
+                                            </p>
+
+
+                                            <!-- ================================
+                                                 OTP
+                                            ================================= -->
+
+                                            <div class="otp-section">
+
+                                                <p class="otp-label">
+                                                    Your verification code
+                                                </p>
+
+                                                <p class="otp-code">
+                                                    TradeOS_otp
+                                                </p>
+
+                                                <p class="otp-expiry">
+                                                    This code expires in 15 minutes.
+                                                </p>
+
+                                            </div>
+
+
+                                            <!-- ================================
+                                                 SECURITY NOTICE
+                                            ================================= -->
+
+                                            <div class="security-box">
+
+                                                <p class="security-title">
+                                                    🔒 Keep your account secure
+                                                </p>
+
+                                                <ul class="security-list">
+
+                                                    <li>
+                                                        This code is valid for 15 minutes only.
+                                                    </li>
+
+                                                    <li>
+                                                        Use this code only once.
+                                                    </li>
+
+                                                    <li>
+                                                        Never share this code with anyone,
+                                                        including TradeOS support.
+                                                    </li>
+
+                                                </ul>
+
+                                            </div>
+
+
+                                            <!-- ================================
+                                                 HELP
+                                            ================================= -->
+
+                                            <p class="help-text">
+
+                                                If you didn't request this code,
+                                                you can safely ignore this email.
+
+                                                <br><br>
+
+                                                Need help?
+                                                <a
+                                                    href="https://TradeOS.com/help"
+                                                    class="help-link"
+                                                >
+                                                    Visit our Help Center
+                                                </a>
+
+                                            </p>
+
+
+                                            <!-- ================================
+                                                 SIGNATURE
+                                            ================================= -->
+
+                                            <div class="signature">
+
+                                                <p class="signature-text">
+                                                    Happy Trading!
+                                                </p>
+
+                                                <p class="team-name">
+                                                    Team TradeOS
+                                                </p>
+
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+
+                                    <!-- ================================
+                                         FOOTER
+                                    ================================= -->
+
+                                    <tr>
+                                        <td class="footer">
+
+                                            <p class="footer-company">
+                                                TradeOS — Empowering Smart Traders
+                                            </p>
+
+
+                                            <!-- SOCIAL LINKS -->
+
+                                            <div class="social-links">
+
+                                                <a href="https://TradeOS.com/youtube">
+                                                    YouTube
+                                                </a>
+
+                                                <a href="https://TradeOS.com/facebook">
+                                                    Facebook
+                                                </a>
+
+                                                <a href="https://TradeOS.com/twitter">
+                                                    Twitter
+                                                </a>
+
+                                                <a href="https://TradeOS.com/linkedin">
+                                                    LinkedIn
+                                                </a>
+
+                                                <a href="https://TradeOS.com/instagram">
+                                                    Instagram
+                                                </a>
+
+                                            </div>
+
+
+                                            <!-- FOOTER LINKS -->
+
+                                            <p class="footer-links">
+
+                                                <a href="https://TradeOS.com/about">
+                                                    About Us
+                                                </a>
+
+                                                <span>|</span>
+
+                                                <a href="https://TradeOS.com/terms">
+                                                    Terms & Conditions
+                                                </a>
+
+                                                <span>|</span>
+
+                                                <a href="https://TradeOS.com/privacy">
+                                                    Privacy Policy
+                                                </a>
+
+                                            </p>
+
+
+                                            <!-- COPYRIGHT -->
+
+                                            <p class="copyright">
+                                                © 2024 TradeOS Technologies Inc.
+                                                All rights reserved.
+                                            </p>
+
+
+                                            <!-- ADDRESS -->
+
+                                            <p class="address">
+                                                123 Trading Plaza,
+                                                Financial District,
+                                                NY 10001
+                                            </p>
+
+
+                                            <!-- AUTOMATED MESSAGE -->
+
+                                            <p class="automated-message">
+
+                                                This is an automated email from TradeOS.
+                                                You received this because you requested
+                                                account access.
+
+                                                <br>
+
+                                                Questions?
+                                                Visit our
+                                                <a
+                                                    href="https://TradeOS.com/help"
+                                                    class="help-link"
+                                                >
+                                                    Help Center
+                                                </a>
+                                                or contact support.
+
+                                            </p>
+
+                                        </td>
+                                    </tr>
+
+                                </table>
+
+                            </td>
+                        </tr>
+
+                    </table>
+
                 </div>
-            </div>
-        </div>
-        
-        <div class="footer">
-            <div class="company-info">
-                <p id="footer-text" style="margin: 0; font-weight: bold; color: #2c3e50;">TradeOS - Empowering Smart Traders</p>
-            </div>
-            
-            <p id="footer-text">Stay connected with us:</p>
-            <div class="social-links">
-                <a href="https://TradeOS.com/youtube">YouTube</a> |
-                <a href="https://TradeOS.com/facebook">Facebook</a> |
-                <a href="https://TradeOS.com/twitter">Twitter</a> |
-                <a href="https://TradeOS.com/linkedin">LinkedIn</a> |
-                <a href="https://TradeOS.com/instagram">Instagram</a>
-            </div>
-            
-            <p id="footer-text">ⓒ 2024 TradeOS Technologies Inc. All rights reserved.</p>
-            <p id="footer-text">
-                <a href="https://TradeOS.com/about" style="color: #667eea;">About Us</a> | 
-                <a href="https://TradeOS.com/terms" style="color: #667eea;">Terms & Conditions</a> | 
-                <a href="https://TradeOS.com/privacy" style="color: #667eea;">Privacy Policy</a>
-            </p>
-            <p id="footer-text">123 Trading Plaza, Financial District, NY 10001</p>
-            <p id="footer-text">This is an automated email from TradeOS. You received this because you requested account access.</p>
-            <p id="footer-text">Questions? Visit our <a href="https://TradeOS.com/help" style="color: #667eea;">Help Center</a> or contact support.</p>
-        </div>
-    </div>
+
+            </td>
+        </tr>
+    </table>
+
 </body>
 
 </html>

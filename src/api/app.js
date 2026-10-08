@@ -4,7 +4,7 @@ import express from 'express';
 import cors from 'cors';
 import dbConnect from './db/dbConnect.js';
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 const app = express();
 
 app.use(cors());
